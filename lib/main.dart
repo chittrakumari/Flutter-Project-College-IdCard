@@ -4,14 +4,26 @@ import 'package:flutter/material.dart';
  void main()=>(
 runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
-  home: Home(),
+  home: IDCARD(),
 )
 )
 );
 
+ // In stateless widget data can be changed overtime unlike stateful widgets.
 
 
- class Home extends StatelessWidget {
+
+
+    class IDCARD extends StatefulWidget {
+
+  @override
+  _IDCARDState createState() => _IDCARDState();
+}
+
+class _IDCARDState extends State<IDCARD> {
+
+
+   int yearOfStudy=0;
 
    @override
    Widget build(BuildContext context) {
@@ -35,8 +47,24 @@ color: Colors.black,
 
 ),
 
-     body:
-       Padding(
+
+     //set state to update the values of the variable.
+     floatingActionButton: FloatingActionButton(
+       onPressed: (
+           ){
+         setState(() {
+           yearOfStudy=yearOfStudy+1;
+         });
+       },
+       backgroundColor: Colors.amber[600],
+       child: Icon(Icons.add),
+
+     ),
+
+
+
+
+     body: Padding(
      padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
 
      child:Column(
@@ -125,7 +153,7 @@ color: Colors.black,
              ),
              SizedBox(width: 10.0),
              Text(
-               '2',
+               '$yearOfStudy',
                style: TextStyle(
                    fontSize: 20.0,
                    fontWeight: FontWeight.w600,
@@ -202,4 +230,4 @@ color: Colors.black,
 
      );
    }
- }
+}
